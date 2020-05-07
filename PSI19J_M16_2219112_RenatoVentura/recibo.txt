@@ -1,0 +1,6 @@
+Passagem numero 1 
+2219112@alunos.escoladigital.com
+ Recibo do voo:
+ Voo de Lisboa a Barcelona: 70 Eur
+ Voo de Barcelona a Lisboa: 65 Eur
+ Total: 135 Eur

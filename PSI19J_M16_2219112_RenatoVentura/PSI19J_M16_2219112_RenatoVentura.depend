@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1588856259 source:c:\users\renat\documents\github\psi19j_m16_2219112_renatoventura\psi19j_m16_2219112_renatoventura\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
