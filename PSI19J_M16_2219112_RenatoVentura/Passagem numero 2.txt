@@ -1,4 +1,4 @@
-Passagem numero 1 
+Passagem numero 2 
  Recibo do voo:
  Voo de lisboa a porto: 150 €
  Voo de porto a lisboa: 0 Eur

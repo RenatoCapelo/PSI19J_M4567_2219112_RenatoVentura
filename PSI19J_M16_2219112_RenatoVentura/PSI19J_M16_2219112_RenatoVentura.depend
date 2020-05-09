@@ -1,6 +1,13 @@
 # depslib dependency file v1.0
-1588856259 source:c:\users\renat\documents\github\psi19j_m16_2219112_renatoventura\psi19j_m16_2219112_renatoventura\main.c
+1588987754 source:c:\users\renat\documents\github\psi19j_m16_2219112_renatoventura\psi19j_m16_2219112_renatoventura\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
+	<locale.h>
+	<time.h>
+	<windows.h>
+	"funcoes.h"
+	"conio.c"
+
+1588988051 c:\users\renat\documents\github\psi19j_m16_2219112_renatoventura\psi19j_m16_2219112_renatoventura\funcoes.h
 
