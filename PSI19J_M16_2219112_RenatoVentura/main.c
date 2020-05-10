@@ -23,23 +23,22 @@ while(1==1){
   time(&segundos);
 
    //para converter de segundos para o tempo local
-  //utilizamos a função localtime
   data_hora_atual = localtime(&segundos);
 
 hidecursor(); ///Caso esta função não seja chamada. O cursor irá ficar "maluco" a percorrer todas as linhas da consola pois não tem tempo para chegar ao fim antes do reinicio
 
-gotoxy(25,3);  printf("                     São %d:%d:%d do dia %d/%d/%d                   ",data_hora_atual->tm_hour,data_hora_atual->tm_min,data_hora_atual->tm_sec,data_hora_atual->tm_mday,data_hora_atual->tm_mon+1,data_hora_atual->tm_year+1900);
-   gotoxy(25,4); puts("/-----------------------------------------------------------------\\");
-   gotoxy(25,5); puts("*                                                                 *");
-   gotoxy(25,6); puts("*                                                                 *");
-gotoxy(25,7);  printf("*                             Login                               *");
-   gotoxy(25,8); puts("*                                                                 *");
-gotoxy(25,9);  printf("*                            Sign Up                              *");
-   gotoxy(25,10); puts("*                                                                 *");
-   gotoxy(25,11); puts("*                   Ver o Manual do Utilizador                    *");
-   gotoxy(25,12); puts("*                                                                 *");
-   gotoxy(25,13); puts("*                                                                 *");
-   gotoxy(25,14); puts("\\-----------------------------------------------------------------/");
+    gotoxy(25,8);   printf("                     São %d:%d:%d do dia %d/%d/%d                   ",data_hora_atual->tm_hour,data_hora_atual->tm_min,data_hora_atual->tm_sec,data_hora_atual->tm_mday,data_hora_atual->tm_mon+1,data_hora_atual->tm_year+1900);
+    gotoxy(25,9);    puts("/-----------------------------------------------------------------\\");
+    gotoxy(25,10);    puts("*                                                                 *");
+    gotoxy(25,11);    puts("*                                                                 *");
+    gotoxy(25,12);  printf("*                             Login                               *");
+    gotoxy(25,13);    puts("*                                                                 *");
+    gotoxy(25,14);  printf("*                            Sign Up                              *");
+    gotoxy(25,15);    puts("*                                                                 *");
+    gotoxy(25,16);    puts("*                   Ver o Manual do Utilizador                    *");
+    gotoxy(25,17);    puts("*                                                                 *");
+    gotoxy(25,18);    puts("*                                                                 *");
+    gotoxy(25,19);    puts("\\-----------------------------------------------------------------/");
    time(&segundos);
     }
 }
@@ -50,11 +49,18 @@ void menu()
 }
 
 int main()
-{
+{   setlocale(LC_ALL,"Portuguese");
+    //Determina o tamanho da consola para o menu não ficar desformado em outros dispositivos
+    HWND console = GetConsoleWindow();
+    RECT ConsoleRect;
+    GetWindowRect(console, &ConsoleRect);
+    MoveWindow(console, ConsoleRect.left, ConsoleRect.top, 975, 500, TRUE);
+    //
+
 
     menu();
 
-    ///recibo("lisboa","porto",1,150,200,"renatocapelo2003@gmail.com");
+    //recibo("lisboa","porto",1,150,200,"renatocapelo2003@gmail.com");
 
     return 0;
 }

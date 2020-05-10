@@ -1,6 +1,0 @@
-Passagem numero 3 
- Recibo do voo:
- Voo de lisboa a porto: 150 €
- Voo de porto a lisboa: 200 Eur
- Iva Aplicado á Taxa legal de 23% 
-Total: 350 Eur

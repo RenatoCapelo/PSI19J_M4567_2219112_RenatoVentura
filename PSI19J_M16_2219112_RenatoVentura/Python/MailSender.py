@@ -6,9 +6,13 @@ from email import encoders
 import os.path
 
 #abre o ficheiro criado com o email do cliente atual
-f=open("email.txt")
+
+path=os.getcwd()+'\\Files\\TEMP\\email.txt'
+path1=os.getcwd()+'\\Files\\TEMP\\recibo.txt'
+
+f=open(path)
 #abre o recibo criado
-fi=open("recibo.txt")
+fi=open(path1)
 
 email= 'portugal.aero@gmail.com'
 password= 'nZ%lQv8!gV2*'
@@ -40,7 +44,7 @@ msg.attach(MIMEText(message, 'plain'))
 
 # Setup the attachment
 filename = os.path.basename("recibo.txt")
-attachment = open("recibo.txt", "rb")
+attachment = open(path1, "rb")
 part = MIMEBase('application', 'octet-stream')
 part.set_payload(attachment.read())
 encoders.encode_base64(part)
