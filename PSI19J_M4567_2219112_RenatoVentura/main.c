@@ -6,9 +6,21 @@
 #include <windows.h>
 #include "funcoes.h"
 #include "conio.c"
+#include <dirent.h>
+#include <unistd.h>
 
 
 ///Nota 1: O programa deverá criar novos ficheiros txt para cada cliente que encomendas para neste caso registar que reservas cada um tem
+
+struct Login{
+    int num_cliente;
+    char nome1_cliente[255];
+    char nome2_cliente[255];
+    char email_cliente[255];
+    char pais_cliente[255];
+    int nif_cliente;
+};
+struct Login login;
 
 int inicio()
 {
@@ -26,6 +38,7 @@ char getcharacter;
 
        //para converter de segundos para o tempo local
     data_hora_atual = localtime(&segundos);
+
 
     if(option==1){
         while(!kbhit()){
@@ -102,7 +115,7 @@ char getcharacter;
     {
         while(!kbhit()){
         time(&segundos);data_hora_atual = localtime(&segundos);
-    hidecursor(); ///Caso esta função não seja chamada. O cursor irá ficar "maluco" a percorrer todas as linhas da consola pois não tem tempo para chegar ao fim antes do reinicio
+    //hidecursor(); ///Caso esta função não seja chamada. O cursor irá ficar "maluco" a percorrer todas as linhas da consola pois não tem tempo para chegar ao fim antes do reinicio
     gotoxy(2,1);printf("   _____________________________________________________________________________________________________________");
     gotoxy(2,2);printf("  /                                            ");textcolor(LIGHTGREEN);printf(".......");textcolor(GREEN+BLINK);printf(",,,..."); textcolor(RED);printf("/*******");textcolor(WHITE);printf("                                            \\");
     gotoxy(2,3);printf(" /                                             ");textcolor(LIGHTGREEN);printf(",,,,,,,");textcolor(GREEN+BLINK);printf("///");textcolor(LIGHTGREEN);printf("*,,"); textcolor(RED);printf("###########(");textcolor(WHITE);printf("                                         \\");
@@ -175,9 +188,125 @@ char getcharacter;
 }
 
 
-void menu()
+int menu()
 {
     int option=inicio();
+
+    int numberoffiles;
+    int id_cliente;
+    int nif;
+    int value_pass_comp;
+    char pais_cliente[255];
+    char email_input[255];
+    char pass_file[255];
+    char pass_temp_1[255];
+    char pass_temp_2[255];
+    char password_input[255];
+    char file_input[50]="";
+
+    if(option==1)
+    {
+        printf("Insira o seu email: ");
+        gets(email_input);
+
+        printf("\nInsira a pass: ");
+        gets(password_input);
+        for(int a=0;a<strlen(password_input);a++)
+        {
+            password_input[a]=password_input[a]-3;
+        }
+
+        //printf("%s\n",password_input);
+
+        strcat(file_input,"./Files/Users/Logins/");
+        strcat(file_input,email_input);
+        strcat(file_input,".txt");
+        FILE *logon;
+
+        puts(file_input);
+
+        if((logon=fopen(file_input,"r"))!=NULL)
+        {
+            fscanf(logon,"%i %s %s %i %s %s",&id_cliente,login.nome1_cliente,login.nome2_cliente,&nif,pass_file,pais_cliente);
+            fclose(logon);
+            fflush(stdin);
+            if(strcasecmp(pass_file,password_input)==0)
+            {
+                printf("Logado: %s\n",email_input);
+                strcpy(login.email_cliente,email_input);
+                strcpy(login.pais_cliente,pais_cliente);
+                login.num_cliente=id_cliente;
+
+                return id_cliente;
+            }
+            else
+            {
+                printf("Palavra Pass errada");
+            }
+        }
+        else{printf("\nCliente nao existente");}
+    }
+    if(option==2)
+    {
+        /*Label do Goto para caso o user já exista*/registo:
+        puts("Insira o seu email: ");gets(email_input);
+        strcat(file_input,"./Files/Users/Logins/");
+        strcat(file_input,email_input);
+        strcat(file_input,".txt");
+        FILE *reg;
+        if((reg=fopen(file_input,"r")!=NULL))   //Deteta se o ficheiro existe ou não, caso exista o programa retorna para a função de registo.
+        {
+            textbackground(LIGHTRED);puts("Email já registado,  por favor insira outro Email");textbackground(BLACK);
+            strcpy(file_input,""); ///Reseta a string
+            goto registo;   //Volta ao Inicio do registo
+        }
+
+        else
+        {
+            textbackground(LIGHTGREEN);puts("registo UwU");textbackground(BLACK);
+            reg=fopen(file_input,"w");
+            strcpy(login.email_cliente,email_input);
+            puts("Insira o seu Nome"); gets(login.nome1_cliente);
+            puts("Insira o seu Apelido"); gets(login.nome2_cliente);
+            puts("Insira o Seu país de Residencia"); gets(login.pais_cliente);
+            puts("Insira o Seu NIF"); scanf("%i",&login.nif_cliente);
+            fflush(stdin);
+            do{
+                puts("Insira a palavra passe: "); gets(pass_temp_1);
+                puts("Insira outra vez a sua palavra pass: "); gets(pass_temp_2);
+                value_pass_comp=strcmp(pass_temp_1,pass_temp_2);
+                if(value_pass_comp!=0)
+                {
+                    puts("As palavras passes inseridas não são correspondentes, por favor, insira-las outra vez");
+                }
+                else
+                {
+                    strcpy(pass_file,pass_temp_1);strcpy(pass_temp_1,"");strcpy(pass_temp_2,"");
+                    for(int a=0;a<strlen(pass_file);a++)
+                    {
+                        pass_file[a]=pass_file[a]-3;
+                    }
+
+                }
+            }while(value_pass_comp!=0);
+            fprintf(reg,"%i %s %s %i %s %s",id_cliente,login.nome1_cliente,login.nome2_cliente,login.nif_cliente,pass_file,pais_cliente);
+            fclose(reg);
+            fflush(stdin);
+
+        }
+
+
+    }
+    if(option==3)
+    {
+        printf("Irá se abrir o PDF com o Manual de utilizador, para prosseguir com o programa, por favor feche a janela do manual");
+        system("Files\\PDFs\\ManualUtilizador.pdf");
+        printf("aaaaaaaaaaaaaaaaaaa");
+    }
+    if(option==0)
+    {
+        return 0;
+    }
 }
 
 int main()
@@ -190,9 +319,12 @@ int main()
     //
 
 
-    menu();
 
-    //recibo("lisboa","porto",1,150,200,"renatocapelo2003@gmail.com");
+    int user=menu();
+
+    printf("\nO user é o %i,chama-se %s %s, o nif é: %i, o email é %s e vive em: %s",login.num_cliente,login.nome1_cliente,login.nome2_cliente,login.nif_cliente,login.email_cliente,login.pais_cliente);
+
+    //recibo("lisboa","porto",1,150,200,login.email_cliente);
 
     return 0;
 }

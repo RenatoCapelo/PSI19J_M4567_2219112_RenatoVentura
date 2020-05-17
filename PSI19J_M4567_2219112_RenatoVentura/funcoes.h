@@ -4,6 +4,8 @@
 #define num_encomenda_1 "Passagem numero "
 #define num_encomenda_3 ".txt"
 
+#include <dirent.h>
+
 
 void hidecursor()
 {
@@ -14,12 +16,38 @@ void hidecursor()
    SetConsoleCursorInfo(consoleHandle, &info);
 }
 
+int numfiles(char path[255])
+{
+    struct dirent *de;  // Pointer for directory entry
+    int numberoffiles=0;
+printf("path: %s\n\n",path);
+    DIR *dr = opendir(path);
 
+    if (dr == NULL)  // opendir returns NULL if couldn't open directory
+    {
+        printf("Could not open current directory" );
+        return 0;
+    }
 
+        // for readdir()
+        while ((de = readdir(dr)) != NULL)
+        {
+            if ( !strcmp(de->d_name, ".") || !strcmp(de->d_name, "..") )
+            {
+                // do nothing (straight logic)
+            }
+            else
+            {
+                numberoffiles++;
+            }
+        }
+    closedir(dr);
+    return numberoffiles;
+}
 int exists(const char *fname) ///Verifica se o ficheiro existe
 {
     FILE *file;
-    if ((file = fopen(fname, "r")))
+    if ((file = fopen(fname, "r"))!=NULL)
     {
         fclose(file);
         return 1;
@@ -102,3 +130,5 @@ void recibo(char origem[255],char destino[255],int roundtrip,float preco_voo_ida
 }
 */
 #endif // FUNCOES_H_INCLUDED
+
+
