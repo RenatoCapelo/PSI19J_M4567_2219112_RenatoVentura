@@ -1,19 +1,24 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <locale.h>
-#include <time.h>
-#include <windows.h>
+#include <stdio.h>  //Biblioteca base do C
+#include <stdlib.h> //Biblioteca base do C
+#include <string.h> //Biblioteca para manipular strings
+#include <locale.h> //Biblioteca para os caracteres da lingua portuguesa
+#include <time.h>   //Biblioteca para obter o tempo
+#include <windows.h>//Biblioteca para funções da consola do windows
+#include "conio.c"  //Biblioteca para cores
+#include <dirent.h> //Biblioteca para verificar os ficheiros de um diretorio
+#include <stdbool.h>//Biblioteca para utilizar boleanos
 #include "funcoes.h"
-#include "conio.c"
-#include <dirent.h>
-#include <unistd.h>
-
+#include "inicio.h"
+#include "email.h"
+#include "second_menu.h"
 
 ///Nota 1: O programa deverá criar novos ficheiros txt para cada cliente que encomendas para neste caso registar que reservas cada um tem
 
 struct Login{
+    int user_type;
     int num_cliente;
+    int milhas_atuais;
+    int milhas_totais;
     char nome1_cliente[255];
     char nome2_cliente[255];
     char email_cliente[255];
@@ -22,189 +27,24 @@ struct Login{
 };
 struct Login login;
 
-int inicio()
+int firstmenu()
 {
-int option=1;
-char getcharacter;
-    //ponteiro para struct que armazena data e hora
-    struct tm *data_hora_atual;
-
-  //variável do tipo time_t para armazenar o tempo em segundos
-    time_t segundos;
-    while(1)
-    {
-      //obtendo o tempo em segundos
-      time(&segundos);
-
-       //para converter de segundos para o tempo local
-    data_hora_atual = localtime(&segundos);
-
-
-    if(option==1){
-        while(!kbhit()){
-        time(&segundos);data_hora_atual = localtime(&segundos);
-    hidecursor(); ///Caso esta função não seja chamada. O cursor irá ficar "maluco" a percorrer todas as linhas da consola pois não tem tempo para chegar ao fim antes do reinicio
-    gotoxy(2,1);printf("   _____________________________________________________________________________________________________________");
-    gotoxy(2,2);printf("  /                                            ");textcolor(LIGHTGREEN);printf(".......");textcolor(GREEN+BLINK);printf(",,,..."); textcolor(RED);printf("/*******");textcolor(WHITE);printf("                                            \\");
-    gotoxy(2,3);printf(" /                                             ");textcolor(LIGHTGREEN);printf(",,,,,,,");textcolor(GREEN+BLINK);printf("///");textcolor(LIGHTGREEN);printf("*,,"); textcolor(RED);printf("###########(");textcolor(WHITE);printf("                                         \\");
-    gotoxy(2,4);printf("|                                                 ");textcolor(LIGHTGREEN);printf(",,,");textcolor(GREEN+BLINK);printf("/*");textcolor(LIGHTGREEN);printf(",, ,,"); textcolor(RED);printf("####.   ####");textcolor(WHITE);printf("                                          |");
-    gotoxy(2,5);printf("|                                                 ");textcolor(LIGHTGREEN);printf(",,*");textcolor(GREEN+BLINK);printf("/*");textcolor(LIGHTGREEN);printf(",, ,,"); textcolor(RED);printf("############");textcolor(WHITE);printf("                                          |");
-    gotoxy(2,6);printf("|                                                 ");textcolor(LIGHTGREEN);printf(",,");textcolor(GREEN+BLINK);printf("//*");textcolor(LIGHTGREEN);printf(",,,,,"); textcolor(RED);printf("#########");textcolor(WHITE);printf("                                             |");
-    gotoxy(2,7);printf("|                                                 ");textcolor(LIGHTGREEN);printf(",");textcolor(GREEN+BLINK);printf("///*");textcolor(LIGHTGREEN);printf("     "); textcolor(RED);printf("####,");textcolor(WHITE);printf("                                                 |");
-    gotoxy(2,8);printf("|-----------------------------------------------------------------------------------------------------------------|");
-    gotoxy(2,9);printf("|                                                                                                                 |");
-    gotoxy(2,10);printf(" ");gotoxy(25,10);printf("                     São %i:%i:%i do dia %i/%i/%i                                          ",data_hora_atual->tm_hour,data_hora_atual->tm_min,data_hora_atual->tm_sec,data_hora_atual->tm_mday,data_hora_atual->tm_mon+1,data_hora_atual->tm_year+1900);
-    gotoxy(2,11);printf("|");     gotoxy(25,11);    puts(" _________________________________________________________________                         |");
-    gotoxy(2,12);printf("|");     gotoxy(25,12);    puts("/-----------------------------------------------------------------\\                        |");
-    gotoxy(2,13);printf("|");     gotoxy(25,13);    puts("*                                                                 *                        |");
-    gotoxy(2,14);printf("|");     gotoxy(25,14);    puts("*                                                                 *                        |");
-    gotoxy(2,15);printf("|");     gotoxy(25,15);  printf("*                            ");textbackground(LIGHTBLUE);printf(" Login ");textbackground(BLACK);printf("                              *                        |");
-    gotoxy(2,16);printf("|");     gotoxy(25,16);    puts("*                                                                 *                        |");
-    gotoxy(2,17);printf("|");     gotoxy(25,17);  printf("*                            Sign Up                              *                        |");
-    gotoxy(2,18);printf("|");     gotoxy(25,18);    puts("*                                                                 *                        |");
-    gotoxy(2,19);printf("|");     gotoxy(25,19);    puts("*                   Ver o Manual do Utilizador                    *                        |");
-    gotoxy(2,20);printf("|");     gotoxy(25,20);    puts("*                                                                 *                        |");
-    gotoxy(2,21);printf("|");     gotoxy(25,21);    puts("*                                                                 *                        |");
-    gotoxy(2,22);printf("|");     gotoxy(25,22);    puts("\\_________________________________________________________________/                        |");
-    gotoxy(2,23);printf("|                                                                                                                 |\n");
-    gotoxy(2,24);printf("|                                                                                                                 |\n");
-    gotoxy(2,25);printf("|                                                                                                                 |\n");
-    gotoxy(2,26);printf(" |                                                                                                                 |\n");
-    gotoxy(2,27);printf("  \\                                                                                                               /\n");
-    gotoxy(2,28);printf("   \\_____________________________________________________________________________________________________________/");
-       time(&segundos);
-        }
-    }
-    else if(option==2)
-    {
-        while(!kbhit()){
-        time(&segundos);data_hora_atual = localtime(&segundos);
-    hidecursor(); ///Caso esta função não seja chamada. O cursor irá ficar "maluco" a percorrer todas as linhas da consola pois não tem tempo para chegar ao fim antes do reinicio
-    gotoxy(2,1);printf("   _____________________________________________________________________________________________________________");
-    gotoxy(2,2);printf("  /                                            ");textcolor(LIGHTGREEN);printf(".......");textcolor(GREEN+BLINK);printf(",,,..."); textcolor(RED);printf("/*******");textcolor(WHITE);printf("                                            \\");
-    gotoxy(2,3);printf(" /                                             ");textcolor(LIGHTGREEN);printf(",,,,,,,");textcolor(GREEN+BLINK);printf("///");textcolor(LIGHTGREEN);printf("*,,"); textcolor(RED);printf("###########(");textcolor(WHITE);printf("                                         \\");
-    gotoxy(2,4);printf("|                                                 ");textcolor(LIGHTGREEN);printf(",,,");textcolor(GREEN+BLINK);printf("/*");textcolor(LIGHTGREEN);printf(",, ,,"); textcolor(RED);printf("####.   ####");textcolor(WHITE);printf("                                          |");
-    gotoxy(2,5);printf("|                                                 ");textcolor(LIGHTGREEN);printf(",,*");textcolor(GREEN+BLINK);printf("/*");textcolor(LIGHTGREEN);printf(",, ,,"); textcolor(RED);printf("############");textcolor(WHITE);printf("                                          |");
-    gotoxy(2,6);printf("|                                                 ");textcolor(LIGHTGREEN);printf(",,");textcolor(GREEN+BLINK);printf("//*");textcolor(LIGHTGREEN);printf(",,,,,"); textcolor(RED);printf("#########");textcolor(WHITE);printf("                                             |");
-    gotoxy(2,7);printf("|                                                 ");textcolor(LIGHTGREEN);printf(",");textcolor(GREEN+BLINK);printf("///*");textcolor(LIGHTGREEN);printf("     "); textcolor(RED);printf("####,");textcolor(WHITE);printf("                                                 |");
-    gotoxy(2,8);printf("|-----------------------------------------------------------------------------------------------------------------|");
-    gotoxy(2,9);printf("|                                                                                                                 |");
-    gotoxy(2,10);printf(" ");gotoxy(25,10);printf("                     São %i:%i:%i do dia %i/%i/%i                                          ",data_hora_atual->tm_hour,data_hora_atual->tm_min,data_hora_atual->tm_sec,data_hora_atual->tm_mday,data_hora_atual->tm_mon+1,data_hora_atual->tm_year+1900);
-    gotoxy(2,11);printf("|");     gotoxy(25,11);    puts(" _________________________________________________________________                         |");
-    gotoxy(2,12);printf("|");     gotoxy(25,12);    puts("/-----------------------------------------------------------------\\                        |");
-    gotoxy(2,13);printf("|");     gotoxy(25,13);    puts("*                                                                 *                        |");
-    gotoxy(2,14);printf("|");     gotoxy(25,14);    puts("*                                                                 *                        |");
-    gotoxy(2,15);printf("|");     gotoxy(25,15);  printf("*                             Login                               *                        |");
-    gotoxy(2,16);printf("|");     gotoxy(25,16);    puts("*                                                                 *                        |");
-    gotoxy(2,17);printf("|");     gotoxy(25,17);  printf("*                           ");textbackground(LIGHTBLUE);printf(" Sign Up ");textbackground(BLACK);printf("                             *                        |");
-    gotoxy(2,18);printf("|");     gotoxy(25,18);    puts("*                                                                 *                        |");
-    gotoxy(2,19);printf("|");     gotoxy(25,19);    puts("*                   Ver o Manual do Utilizador                    *                        |");
-    gotoxy(2,20);printf("|");     gotoxy(25,20);    puts("*                                                                 *                        |");
-    gotoxy(2,21);printf("|");     gotoxy(25,21);    puts("*                                                                 *                        |");
-    gotoxy(2,22);printf("|");     gotoxy(25,22);    puts("\\_________________________________________________________________/                        |");
-    gotoxy(2,23);printf("|                                                                                                                 |\n");
-    gotoxy(2,24);printf("|                                                                                                                 |\n");
-    gotoxy(2,25);printf("|                                                                                                                 |\n");
-    gotoxy(2,26);printf(" |                                                                                                                 |\n");
-    gotoxy(2,27);printf("  \\                                                                                                               /\n");
-    gotoxy(2,28);printf("   \\_____________________________________________________________________________________________________________/");
-       time(&segundos);data_hora_atual = localtime(&segundos);
-        }
-    }
-    else if(option==3)
-    {
-        while(!kbhit()){
-        time(&segundos);data_hora_atual = localtime(&segundos);
-    //hidecursor(); ///Caso esta função não seja chamada. O cursor irá ficar "maluco" a percorrer todas as linhas da consola pois não tem tempo para chegar ao fim antes do reinicio
-    gotoxy(2,1);printf("   _____________________________________________________________________________________________________________");
-    gotoxy(2,2);printf("  /                                            ");textcolor(LIGHTGREEN);printf(".......");textcolor(GREEN+BLINK);printf(",,,..."); textcolor(RED);printf("/*******");textcolor(WHITE);printf("                                            \\");
-    gotoxy(2,3);printf(" /                                             ");textcolor(LIGHTGREEN);printf(",,,,,,,");textcolor(GREEN+BLINK);printf("///");textcolor(LIGHTGREEN);printf("*,,"); textcolor(RED);printf("###########(");textcolor(WHITE);printf("                                         \\");
-    gotoxy(2,4);printf("|                                                 ");textcolor(LIGHTGREEN);printf(",,,");textcolor(GREEN+BLINK);printf("/*");textcolor(LIGHTGREEN);printf(",, ,,"); textcolor(RED);printf("####.   ####");textcolor(WHITE);printf("                                          |");
-    gotoxy(2,5);printf("|                                                 ");textcolor(LIGHTGREEN);printf(",,*");textcolor(GREEN+BLINK);printf("/*");textcolor(LIGHTGREEN);printf(",, ,,"); textcolor(RED);printf("############");textcolor(WHITE);printf("                                          |");
-    gotoxy(2,6);printf("|                                                 ");textcolor(LIGHTGREEN);printf(",,");textcolor(GREEN+BLINK);printf("//*");textcolor(LIGHTGREEN);printf(",,,,,"); textcolor(RED);printf("#########");textcolor(WHITE);printf("                                             |");
-    gotoxy(2,7);printf("|                                                 ");textcolor(LIGHTGREEN);printf(",");textcolor(GREEN+BLINK);printf("///*");textcolor(LIGHTGREEN);printf("     "); textcolor(RED);printf("####,");textcolor(WHITE);printf("                                                 |");
-    gotoxy(2,8);printf("|-----------------------------------------------------------------------------------------------------------------|");
-    gotoxy(2,9);printf("|                                                                                                                 |");
-    gotoxy(2,10);printf(" ");gotoxy(25,10);printf("                     São %i:%i:%i do dia %i/%i/%i                                          ",data_hora_atual->tm_hour,data_hora_atual->tm_min,data_hora_atual->tm_sec,data_hora_atual->tm_mday,data_hora_atual->tm_mon+1,data_hora_atual->tm_year+1900);
-    gotoxy(2,11);printf("|");     gotoxy(25,11);    puts(" _________________________________________________________________                         |");
-    gotoxy(2,12);printf("|");     gotoxy(25,12);    puts("/-----------------------------------------------------------------\\                        |");
-    gotoxy(2,13);printf("|");     gotoxy(25,13);    puts("*                                                                 *                        |");
-    gotoxy(2,14);printf("|");     gotoxy(25,14);    puts("*                                                                 *                        |");
-    gotoxy(2,15);printf("|");     gotoxy(25,15);  printf("*                             Login                               *                        |");
-    gotoxy(2,16);printf("|");     gotoxy(25,16);    puts("*                                                                 *                        |");
-    gotoxy(2,17);printf("|");     gotoxy(25,17);  printf("*                            Sign Up                              *                        |");
-    gotoxy(2,18);printf("|");     gotoxy(25,18);    puts("*                                                                 *                        |");
-    gotoxy(2,19);printf("|");     gotoxy(25,19);    printf("*                  ");textbackground(LIGHTBLUE);printf(" Ver o Manual do Utilizador ");textbackground(BLACK);printf("                   *                        |");
-    gotoxy(2,20);printf("|");     gotoxy(25,20);    puts("*                                                                 *                        |");
-    gotoxy(2,21);printf("|");     gotoxy(25,21);    puts("*                                                                 *                        |");
-    gotoxy(2,22);printf("|");     gotoxy(25,22);    puts("\\_________________________________________________________________/                        |");
-    gotoxy(2,23);printf("|                                                                                                                 |\n");
-    gotoxy(2,24);printf("|                                                                                                                 |\n");
-    gotoxy(2,25);printf("|                                                                                                                 |\n");
-    gotoxy(2,26);printf(" |                                                                                                                 |\n");
-    gotoxy(2,27);printf("  \\                                                                                                               /\n");
-    gotoxy(2,28);printf("   \\_____________________________________________________________________________________________________________/");
-       time(&segundos);data_hora_atual = localtime(&segundos);
-        }
-    }
-    getcharacter=getch();
-    if(getcharacter =='s'||getcharacter =='S')
-    {
-        if(option>=3)
-        {
-            option=3;
-        }
-        if(option<3)
-        {
-            option++;system("cls");
-        }
-        else{}
-    }
-
-    else if(getcharacter == 'w' || getcharacter =='W')
-    {
-        if(option<=1)
-        {
-            option=1;
-        }
-        if(option>1)
-        {
-            option--;system("cls");
-        }
-    }
-
-    else if(getcharacter == '\r')
-    {
-        system("cls");
-        return option;
-    }
-
-    else
-    {
-        option=option;
-    }
-
-    }
-}
-
-
-int menu()
-{
-    int option=inicio();
-
-    int numberoffiles;
-    int id_cliente;
-    int nif;
-    int value_pass_comp;
-    char pais_cliente[255];
-    char email_input[255];
-    char pass_file[255];
-    char pass_temp_1[255];
-    char pass_temp_2[255];
-    char password_input[255];
+    int option=first_layout();
+    bool checker=false;
+    do{
+    int id_cliente=0;
+    int nif=0;
+    int value_pass_comp=0;
+    char pais_cliente[255]="";
+    char email_input[255]="";
+    char pass_file[255]="";
+    char pass_temp_1[255]="";
+    char pass_temp_2[255]="";
+    char password_input[255]="";
     char file_input[50]="";
+    checker=false;
 
-    if(option==1)
+    if(option==1) ///Login
     {
         printf("Insira o seu email: ");
         gets(email_input);
@@ -216,18 +56,16 @@ int menu()
             password_input[a]=password_input[a]-3;
         }
 
-        //printf("%s\n",password_input);
 
         strcat(file_input,"./Files/Users/Logins/");
         strcat(file_input,email_input);
         strcat(file_input,".txt");
         FILE *logon;
 
-        puts(file_input);
 
         if((logon=fopen(file_input,"r"))!=NULL)
         {
-            fscanf(logon,"%i %s %s %i %s %s",&id_cliente,login.nome1_cliente,login.nome2_cliente,&nif,pass_file,pais_cliente);
+            fscanf(logon,"%i %i %s %s %i %s %s",&login.user_type,&id_cliente,login.nome1_cliente,login.nome2_cliente,&nif,pass_file,pais_cliente);
             fclose(logon);
             fflush(stdin);
             if(strcasecmp(pass_file,password_input)==0)
@@ -236,17 +74,26 @@ int menu()
                 strcpy(login.email_cliente,email_input);
                 strcpy(login.pais_cliente,pais_cliente);
                 login.num_cliente=id_cliente;
-
-                return id_cliente;
+                checker=true;
+                return option;
             }
             else
             {
-                printf("Palavra Pass errada");
+                checker=false;
+                printf("Palavra Pass errada, por favor confira os seus dados\n\n");
+                sleep(2);
+                system("cls");
+
             }
         }
-        else{printf("\nCliente nao existente");}
+        else{
+                checker=false;
+                printf("\nCliente nao existente, por favor confira os seus dados\n\n");
+                sleep(2);
+                system("cls");
+        }
     }
-    if(option==2)
+    if(option==2) ///Signup
     {
         /*Label do Goto para caso o user já exista*/registo:
         puts("Insira o seu email: ");gets(email_input);
@@ -254,7 +101,7 @@ int menu()
         strcat(file_input,email_input);
         strcat(file_input,".txt");
         FILE *reg;
-        if((reg=fopen(file_input,"r")!=NULL))   //Deteta se o ficheiro existe ou não, caso exista o programa retorna para a função de registo.
+        if(exists(file_input)==1)   //Deteta se o ficheiro existe ou não, caso exista o programa retorna para a função de registo.
         {
             textbackground(LIGHTRED);puts("Email já registado,  por favor insira outro Email");textbackground(BLACK);
             strcpy(file_input,""); ///Reseta a string
@@ -289,28 +136,69 @@ int menu()
 
                 }
             }while(value_pass_comp!=0);
-            fprintf(reg,"%i %s %s %i %s %s",id_cliente,login.nome1_cliente,login.nome2_cliente,login.nif_cliente,pass_file,pais_cliente);
+            login.num_cliente=numfiles("./Files/Users/Logins");
+            fprintf(reg,"0 %i %s %s %i %s %s",login.num_cliente,login.nome1_cliente,login.nome2_cliente,login.nif_cliente,pass_file,login.pais_cliente);
             fclose(reg);
             fflush(stdin);
+
+
+            system("cls");
+            gotoxy(42,12);puts("Registo Efetuado com sucesso :D");
+            system("pause");
+            checker=true;
+            return option;
+
 
         }
 
 
     }
-    if(option==3)
+    if(option==3) ///User Manual
     {
         printf("Irá se abrir o PDF com o Manual de utilizador, para prosseguir com o programa, por favor feche a janela do manual");
         system("Files\\PDFs\\ManualUtilizador.pdf");
         printf("aaaaaaaaaaaaaaaaaaa");
+        checker=true;
+        return option;
     }
-    if(option==0)
+    if(option==4) ///Fechar Programa
     {
-        return 0;
+        checker=true;
+        return option;
     }
+    }while(checker==false);
+}
+
+int secondmenu()
+{
+    switch(secondlayout())
+    {
+    case 1:
+        return 1;
+        break;
+    case 2:
+        return 2;
+        break;
+
+    case 3:
+        return 3;
+        break;
+    case 4:
+        return 4;
+        break;
+    case 5:
+        return 5;
+        break;
+    case 6:
+        return 6;
+        break;
+    }
+
 }
 
 int main()
-{   setlocale(LC_ALL,"Portuguese");
+{
+    setlocale(LC_ALL,"Portuguese");
     //Determina o tamanho da consola para o menu não ficar desformado em outros dispositivos
     HWND console = GetConsoleWindow();
     RECT ConsoleRect;
@@ -318,11 +206,40 @@ int main()
     MoveWindow(console, ConsoleRect.left, ConsoleRect.top, 970, 500, TRUE);
     //
 
+    inicio: ;
+    int option=firstmenu();
+    int option2;
+    if(option==4)
+    {
+        printf("ah YEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEET");
+       return 0;
+    }
+
+    else if(option==1 || option==2)
+    {
+        int option2=secondmenu();
+        system("cls");
+        switch(option2)
+        {
+            case 5: goto inicio;break;
+            case 6: return 0;
+            default: break;
+        }
+    }
+    else if(option==3)
+    {
+        printf("menuzinho drenastico");
+        //return 0;
+    }
+    else
+    {
+        printf("tás me a bugar isto dred");
+    }
 
 
-    int user=menu();
 
-    printf("\nO user é o %i,chama-se %s %s, o nif é: %i, o email é %s e vive em: %s",login.num_cliente,login.nome1_cliente,login.nome2_cliente,login.nif_cliente,login.email_cliente,login.pais_cliente);
+
+    //printf("\nO user é o %i,chama-se %s %s, o nif é: %i, o email é %s e vive em: %s e é da classe %i",login.num_cliente,login.nome1_cliente,login.nome2_cliente,login.nif_cliente,login.email_cliente,login.pais_cliente,login.user_type);
 
     //recibo("lisboa","porto",1,150,200,login.email_cliente);
 
