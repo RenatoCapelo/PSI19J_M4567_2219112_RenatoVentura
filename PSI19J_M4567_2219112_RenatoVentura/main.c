@@ -7,25 +7,14 @@
 #include "conio.c"  //Biblioteca para cores
 #include <dirent.h> //Biblioteca para verificar os ficheiros de um diretorio
 #include <stdbool.h>//Biblioteca para utilizar boleanos
+#include "structures.h"
 #include "funcoes.h"
-#include "inicio.h"
+#include "layouts.h"
 #include "email.h"
-#include "second_menu.h"
+#include "Venda Bilhetes.h"
 
-///Nota 1: O programa deverá criar novos ficheiros txt para cada cliente que encomendas para neste caso registar que reservas cada um tem
+///Nota 1: O programa deverá criar novos ficheiros txt para cada cliente que encomenda para neste caso registar que reservas cada um tem
 
-struct Login{
-    int user_type;
-    int num_cliente;
-    int milhas_atuais;
-    int milhas_totais;
-    char nome1_cliente[255];
-    char nome2_cliente[255];
-    char email_cliente[255];
-    char pais_cliente[255];
-    int nif_cliente;
-};
-struct Login login;
 
 int firstmenu()
 {
@@ -71,6 +60,7 @@ int firstmenu()
             if(strcasecmp(pass_file,password_input)==0)
             {
                 printf("Logado: %s\n",email_input);
+                sleep(1);
                 strcpy(login.email_cliente,email_input);
                 strcpy(login.pais_cliente,pais_cliente);
                 login.num_cliente=id_cliente;
@@ -157,7 +147,6 @@ int firstmenu()
     {
         printf("Irá se abrir o PDF com o Manual de utilizador, para prosseguir com o programa, por favor feche a janela do manual");
         system("Files\\PDFs\\ManualUtilizador.pdf");
-        printf("aaaaaaaaaaaaaaaaaaa");
         checker=true;
         return option;
     }
@@ -174,6 +163,8 @@ int secondmenu()
     switch(secondlayout())
     {
     case 1:
+
+        ticket_selling();
         return 1;
         break;
     case 2:
@@ -198,6 +189,7 @@ int secondmenu()
 
 int main()
 {
+
     setlocale(LC_ALL,"Portuguese");
     //Determina o tamanho da consola para o menu não ficar desformado em outros dispositivos
     HWND console = GetConsoleWindow();
@@ -211,7 +203,7 @@ int main()
     int option2;
     if(option==4)
     {
-        printf("ah YEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEET");
+        printf("Até à Próxima");
        return 0;
     }
 
@@ -222,7 +214,7 @@ int main()
         switch(option2)
         {
             case 5: goto inicio;break;
-            case 6: return 0;
+            case 6: return 0;break;
             default: break;
         }
     }
@@ -233,15 +225,8 @@ int main()
     }
     else
     {
-        printf("tás me a bugar isto dred");
+        printf("Error ID:1, por favor contacte o suporte técnico e informe o ID deste erro.");
     }
 
-
-
-
-    //printf("\nO user é o %i,chama-se %s %s, o nif é: %i, o email é %s e vive em: %s e é da classe %i",login.num_cliente,login.nome1_cliente,login.nome2_cliente,login.nif_cliente,login.email_cliente,login.pais_cliente,login.user_type);
-
-    //recibo("lisboa","porto",1,150,200,login.email_cliente);
-
-    return 0;
+return 0;
 }

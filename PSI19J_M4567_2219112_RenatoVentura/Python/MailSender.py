@@ -14,7 +14,7 @@ f=open(path)
 #abre o recibo criado
 fi=open(path1)
 
-email= 'portugal.aero@gmail.com'
+email= 'orders@aeroportugal.com'
 password= 'nZ%lQv8!gV2*'
 #como no recibo aparece sempre o numero da reserva na primeira linha
 #consigo fazer com que o subject vá buscar a primeira linha do recibo
@@ -55,7 +55,7 @@ msg.attach(part)
 
 
 #deverá se substituir o ip do server smtp caso exita mudança de provedor de email. Neste caso,o ip é o do server de smtp do gmail.
-server = smtplib.SMTP('64.233.184.108')
+server = smtplib.SMTP('81.88.48.66')
 server.starttls()
 server.login(email, password)
 text = msg.as_string()

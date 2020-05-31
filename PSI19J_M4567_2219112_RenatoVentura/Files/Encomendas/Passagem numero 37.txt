@@ -1,0 +1,7 @@
+Passagem numero 37 
+ Recibo do voo:
+ Voo de Portugal a Brasil: 450,00 €
+ Voo de Brasil a Portugal: 780,00 Eur
+ Iva Aplicado de acordo com a Taxa legal de 23% 
+Total Sem IVA: 1000,00 €
+Total: 1230,00 Eur
