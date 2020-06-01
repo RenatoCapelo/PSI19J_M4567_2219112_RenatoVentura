@@ -18,21 +18,23 @@ void hidecursor()
 
 int numfiles(char path[255])
 {
-    struct dirent *de;  // Pointer para o diretorio
+    struct dirent *de;  // Pointer for directory entry
     int numberoffiles=0;
+printf("path: %s\n\n",path);
     DIR *dr = opendir(path);
 
-    if (dr == NULL)  // Irá retornar NULL caso não seja possivel abrir o diretorio
+    if (dr == NULL)  // opendir returns NULL if couldn't open directory
     {
         printf("Could not open current directory" );
         return 0;
     }
 
+        // for readdir()
         while ((de = readdir(dr)) != NULL)
         {
             if ( !strcmp(de->d_name, ".") || !strcmp(de->d_name, "..") )
             {
-                // vai ignorar os ficheiros "." e ".." pois não são ficheiros mas sim diretorio
+                // do nothing (straight logic)
             }
             else
             {
@@ -42,7 +44,6 @@ int numfiles(char path[255])
     closedir(dr);
     return numberoffiles;
 }
-
 int exists(const char *fname) ///Verifica se o ficheiro existe
 {
     FILE *file;

@@ -1,7 +1,0 @@
-Passagem numero 21 
- Recibo do voo:
- Voo de portugal a Alemanha: 300,00 €
- Voo de Alemanha a portugal: 500,00 Eur
- Iva Aplicado de acordo com a Taxa legal de 23% 
-Total Sem IVA: 650,41 €
-Total: 800,00 Eur

@@ -1,8 +1,8 @@
-Passagem numero 40 
-souravsaul@gmail.com
+Passagem numero 16 
+algumacoisamnb@gmail.com
  Recibo do voo:
- Voo de portugal a Brasil: 450,00 Eur
- Voo de Brasil a portugal: 780,00 Eur
+ Voo de lisboa a porto: 150,00 Eur
+ Voo de porto a lisboa: 200,00 Eur
  Iva Aplicado de acordo com a Taxa legal de 23% 
-Total Sem IVA: 1000,00 €
-Total: 1230,00 Eur
+Total Sem IVA: 284,55 €
+Total: 350,00 Eur

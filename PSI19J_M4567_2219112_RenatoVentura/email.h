@@ -45,17 +45,17 @@ void recibo(char origem[255],char destino[255],int roundtrip,float preco_voo_ida
     }
     else if(roundtrip==0)
     {
-    fprintf(ficheiro,"%s \n Recibo do voo:\n Voo de %s a %s: %.2f Eur\n Iva Aplicado de acordo com a Taxa legal de 23%c \nTotal: %.2f Eur\n",num_encomenda_final_temp,origem,destino,preco_voo_ida,37,preco_voo_ida);
-    fprintf(ficheiro_temp,"%s \n%s\n Recibo do voo:\n Voo de %s a %s: %.2f Eur\n Iva Aplicado de acordo com a Taxa legal de 23%c \n Total: %.2f Eur\n",num_encomenda_final_temp,email,origem,destino,preco_voo_ida,37,preco_voo_ida);
+    fprintf(ficheiro,"%s \n Recibo do voo:\n Voo de %s a %s: %f Eur\n Iva Aplicado de acordo com a Taxa legal de 23%c \nTotal: %f Eur\n",num_encomenda_final_temp,origem,destino,preco_voo_ida,37,preco_voo_ida);
+    fprintf(ficheiro_temp,"%s \n%s\n Recibo do voo:\n Voo de %s a %s: %f Eur\n Iva Aplicado de acordo com a Taxa legal de 23%c \n Total: %f Eur\n",num_encomenda_final_temp,email,origem,destino,preco_voo_ida,37,preco_voo_ida);
     }
 
     fclose(info_mail);
     fclose(ficheiro);
     fclose(ficheiro_temp);
-    //system("Python\\mailsender.py");      ///Abre o script de python que envia o email
+    //system("Python\\mailsender.py");   ///Abre o script de python que envia o email
     system("Python\\dist\\mailsender.exe"); ///Abre a app em python que envia o email
     printf("recibo enviado para o seu email\n");
-system("pause");
+
 
 }
 

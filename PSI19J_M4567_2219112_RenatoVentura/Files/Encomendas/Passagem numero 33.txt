@@ -1,5 +1,0 @@
-Passagem numero 33 
- Recibo do voo:
- Voo de Portugal a Brasil: 450,00 Eur
- Iva Aplicado de acordo com a Taxa legal de 23% 
-Total: 450,00 Eur

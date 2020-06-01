@@ -31,22 +31,19 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="Venda Bilhetes.h">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
 		<Unit filename="email.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="funcoes.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
-		<Unit filename="layouts.h">
+		<Unit filename="inicio.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="structures.h">
+		<Unit filename="second_menu.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="testes.h">
