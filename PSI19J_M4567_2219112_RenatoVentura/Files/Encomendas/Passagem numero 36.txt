@@ -1,0 +1,7 @@
+Passagem numero 36 
+ Recibo do voo:
+ Voo de reino unido a portugal: 100,00 €
+ Voo de portugal a reino unido: 200,00 Eur
+ Iva Aplicado de acordo com a Taxa legal de 23% 
+Total Sem IVA: 243,90 €
+Total: 300,00 Eur

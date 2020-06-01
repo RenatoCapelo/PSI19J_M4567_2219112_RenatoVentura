@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1590100842 source:c:\users\renat\documents\github\psi19j_m4567_2219112_renatoventura\psi19j_m4567_2219112_renatoventura\main.c
+1590935350 source:c:\users\renat\documents\github\psi19j_m4567_2219112_renatoventura\psi19j_m4567_2219112_renatoventura\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -8,17 +8,26 @@
 	<windows.h>
 	"conio.c"
 	<dirent.h>
+	<stdbool.h>
+	"structures.h"
 	"funcoes.h"
-	"inicio.h"
+	"layouts.h"
 	"email.h"
-	"second_menu.h"
+	"Venda Bilhetes.h"
 
-1589911939 c:\users\renat\documents\github\psi19j_m4567_2219112_renatoventura\psi19j_m4567_2219112_renatoventura\funcoes.h
+1590933550 c:\users\renat\documents\github\psi19j_m4567_2219112_renatoventura\psi19j_m4567_2219112_renatoventura\funcoes.h
 	<dirent.h>
 
 1589912179 c:\users\renat\documents\github\psi19j_m4567_2219112_renatoventura\psi19j_m4567_2219112_renatoventura\inicio.h
 
-1590092963 c:\users\renat\documents\github\psi19j_m4567_2219112_renatoventura\psi19j_m4567_2219112_renatoventura\email.h
+1590937690 c:\users\renat\documents\github\psi19j_m4567_2219112_renatoventura\psi19j_m4567_2219112_renatoventura\email.h
 
 1590088467 c:\users\renat\documents\github\psi19j_m4567_2219112_renatoventura\psi19j_m4567_2219112_renatoventura\second_menu.h
+
+1590883458 c:\users\renat\documents\github\psi19j_m4567_2219112_renatoventura\psi19j_m4567_2219112_renatoventura\layouts.h
+
+1590943870 c:\users\renat\documents\github\psi19j_m4567_2219112_renatoventura\psi19j_m4567_2219112_renatoventura\structures.h
+
+1590883395 c:\users\renat\documents\github\psi19j_m4567_2219112_renatoventura\psi19j_m4567_2219112_renatoventura\venda bilhetes.h
+	"structures.h"
 

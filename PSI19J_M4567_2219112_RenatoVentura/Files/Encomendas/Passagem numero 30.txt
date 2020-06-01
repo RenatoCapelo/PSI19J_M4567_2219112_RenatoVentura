@@ -1,0 +1,5 @@
+Passagem numero 30 
+ Recibo do voo:
+ Voo de portugal a Brasil: 450,000000 Eur
+ Iva Aplicado de acordo com a Taxa legal de 23% 
+Total: 450,000000 Eur
