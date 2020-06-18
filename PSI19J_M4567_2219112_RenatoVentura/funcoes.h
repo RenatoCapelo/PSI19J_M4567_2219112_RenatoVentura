@@ -7,7 +7,7 @@
 #include <dirent.h>
 
 
-void hidecursor()
+void hidecursor()  ///NAO SEI O QUE SE PASSA AQUI, SÓ SEI QUE FUNCEMINA :D, OBRIGADO STACK OVERFLOW!!
 {
    HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
    CONSOLE_CURSOR_INFO info;
@@ -19,12 +19,12 @@ void hidecursor()
 int numfiles(char path[255])
 {
     struct dirent *de;  // Pointer para o diretorio
-    int numberoffiles=0;
+    int numficheiros=0;
     DIR *dr = opendir(path);
 
-    if (dr == NULL)  // Irá retornar NULL caso não seja possivel abrir o diretorio
+    if (dr == NULL)
     {
-        printf("Could not open current directory" );
+        printf("Não foi possivel abrir o diretorio, por favor contacte o administrador");
         return 0;
     }
 
@@ -32,15 +32,15 @@ int numfiles(char path[255])
         {
             if ( !strcmp(de->d_name, ".") || !strcmp(de->d_name, "..") )
             {
-                // vai ignorar os ficheiros "." e ".." pois não são ficheiros mas sim diretorio
+                // vai ignorar os ficheiros "." e ".." pois não são ficheiros mas sim os diretorios "base"
             }
             else
             {
-                numberoffiles++;
+                numficheiros++;
             }
         }
     closedir(dr);
-    return numberoffiles;
+    return numficheiros;
 }
 
 int exists(const char *fname) ///Verifica se o ficheiro existe
@@ -54,25 +54,6 @@ int exists(const char *fname) ///Verifica se o ficheiro existe
     return 0;
 }
 
-
-
-
-/*int selecionar_origem()
-{
-    struct a{
-    int codigo[10];
-    char nome[50][10];
-    char destinos[255][5][5]={                                  //5 continentes cada um com 5 destinos
-        {"Lisboa","Madrid","Porto","Ponta Delgada","Madeira"},
-        {"Porto","Toronto","Holanda","Heathrow","Paris"},
-        {""},
-
-    };
-    };
-
-
-}
-*/
 #endif // FUNCOES_H_INCLUDED
 
 

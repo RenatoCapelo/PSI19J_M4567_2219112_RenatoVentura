@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['MailSender.py'],
-             pathex=['C:\\Users\\renat\\Desktop\\Python\\Python'],
+             pathex=['C:\\Users\\renat\\Documents\\GitHub\\PSI19J_M4567_2219112_RenatoVentura\\PSI19J_M4567_2219112_RenatoVentura\\Python'],
              binaries=[],
              datas=[],
              hiddenimports=[],
@@ -30,4 +30,4 @@ exe = EXE(pyz,
           upx=True,
           upx_exclude=[],
           runtime_tmpdir=None,
-          console=False , icon='C:\\Users\\renat\\Desktop\\Python\\Python\\icon.ico')
+          console=False , icon='C:\\icon.ico')

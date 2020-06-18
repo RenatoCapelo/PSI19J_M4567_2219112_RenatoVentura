@@ -4,6 +4,7 @@
 int first_layout()
 {
 int option=1;
+
 char getcharacter;
     //ponteiro para struct que armazena data e hora
     struct tm *data_hora_atual;
@@ -20,9 +21,10 @@ char getcharacter;
 
 
     if(option==1){
+
         while(!kbhit()){
         time(&segundos);data_hora_atual = localtime(&segundos);
-    hidecursor(); ///Caso esta função não seja chamada. O cursor irá ficar "maluco" a percorrer todas as linhas da consola pois não tem tempo para chegar ao fim antes do reinicio
+    hidecursor(); //Caso esta função não seja chamada. O cursor irá ficar "maluco" a percorrer todas as linhas da consola pois não tem tempo para chegar ao fim antes do reinicio
     gotoxy(2,1);printf("   _____________________________________________________________________________________________________________");
     gotoxy(2,2);printf("  /                                            ");textcolor(LIGHTGREEN);printf(".......");textcolor(GREEN+BLINK);printf(",,,..."); textcolor(RED);printf("/*******");textcolor(WHITE);printf("                                            \\");
     gotoxy(2,3);printf(" /                                             ");textcolor(LIGHTGREEN);printf(",,,,,,,");textcolor(GREEN+BLINK);printf("///");textcolor(LIGHTGREEN);printf("*,,"); textcolor(RED);printf("###########(");textcolor(WHITE);printf("                                         \\");
@@ -58,7 +60,7 @@ char getcharacter;
     {
         while(!kbhit()){
         time(&segundos);data_hora_atual = localtime(&segundos);
-    hidecursor(); ///Caso esta função não seja chamada. O cursor irá ficar "maluco" a percorrer todas as linhas da consola pois não tem tempo para chegar ao fim antes do reinicio
+    hidecursor(); //Caso esta função não seja chamada. O cursor irá ficar "maluco" a percorrer todas as linhas da consola pois não tem tempo para chegar ao fim antes do reinicio
     gotoxy(2,1);printf("   _____________________________________________________________________________________________________________");
     gotoxy(2,2);printf("  /                                            ");textcolor(LIGHTGREEN);printf(".......");textcolor(GREEN+BLINK);printf(",,,..."); textcolor(RED);printf("/*******");textcolor(WHITE);printf("                                            \\");
     gotoxy(2,3);printf(" /                                             ");textcolor(LIGHTGREEN);printf(",,,,,,,");textcolor(GREEN+BLINK);printf("///");textcolor(LIGHTGREEN);printf("*,,"); textcolor(RED);printf("###########(");textcolor(WHITE);printf("                                         \\");
@@ -474,7 +476,7 @@ int secondlayout()
 void ticket_selling_layout()
 {
     system("cls");
-    char origin_input[99];
+
         gotoxy(2,1);printf("   _____________________________________________________________________________________________________________");
         gotoxy(2,2);printf("  /                                            ");textcolor(LIGHTGREEN);printf(".......");textcolor(GREEN+BLINK);printf(",,,..."); textcolor(RED);printf("/*******");textcolor(WHITE);printf("                                            \\");
         gotoxy(2,3);printf(" /                                             ");textcolor(LIGHTGREEN);printf(",,,,,,,");textcolor(GREEN+BLINK);printf("///");textcolor(LIGHTGREEN);printf("*,,"); textcolor(RED);printf("###########(");textcolor(WHITE);printf("                                         \\");
@@ -509,23 +511,13 @@ int roundtrip_layout(char destino[99],int oneway,int roundtrip)
 {
 int option=1;
 char getcharacter;
-    //ponteiro para struct que armazena data e hora
-    struct tm *data_hora_atual;
 
-  //variável do tipo time_t para armazenar o tempo em segundos
-    time_t segundos;
     while(1)
     {
-      //obtendo o tempo em segundos
-      time(&segundos);
-
-       //para converter de segundos para o tempo local
-    data_hora_atual = localtime(&segundos);
-
 
     if(option==1){
+
         while(!kbhit()){
-        time(&segundos);data_hora_atual = localtime(&segundos);
     hidecursor(); ///Caso esta função não seja chamada. O cursor irá ficar "maluco" a percorrer todas as linhas da consola pois não tem tempo para chegar ao fim antes do reinicio
     gotoxy(2,1);printf("   _____________________________________________________________________________________________________________");
     gotoxy(2,2);printf("  /                                            ");textcolor(LIGHTGREEN);printf(".......");textcolor(GREEN+BLINK);printf(",,,..."); textcolor(RED);printf("/*******");textcolor(WHITE);printf("                                            \\");
@@ -536,7 +528,7 @@ char getcharacter;
     gotoxy(2,7);printf("|                                                 ");textcolor(LIGHTGREEN);printf(",");textcolor(GREEN+BLINK);printf("///*");textcolor(LIGHTGREEN);printf("     "); textcolor(RED);printf("####,");textcolor(WHITE);printf("                                                 |");
     gotoxy(2,8);printf("|-----------------------------------------------------------------------------------------------------------------|");
     gotoxy(2,9);printf("|                                                                                                                 |");
-    gotoxy(2,10);printf("                 Destino Selecionado: %s, Preço Viagem Ida: %i Eur, Preco Viagem Ida e Volta: %i",destino,oneway,roundtrip);
+    gotoxy(2,10);printf("                 Destino Selecionado: %s, Preço Viagem Ida: %i Eur, Preco Viagem Ida e Volta: %i",destino,oneway,roundtrip+oneway);
     gotoxy(2,11);printf("|");     gotoxy(25,11);    puts(" _________________________________________________________________                         |");
     gotoxy(2,12);printf("|");     gotoxy(25,12);    puts("/-----------------------------------------------------------------\\                        |");
     gotoxy(2,13);printf("|");     gotoxy(25,13);    puts("*                                                                 *                        |");
@@ -555,13 +547,11 @@ char getcharacter;
     gotoxy(2,26);printf(" |                                                                                                                 |\n");
     gotoxy(2,27);printf("  \\                                                                                                               /\n");
     gotoxy(2,28);printf("   \\_____________________________________________________________________________________________________________/");
-       time(&segundos);data_hora_atual = localtime(&segundos);
     }
     }
     else if(option==2)
     {
         while(!kbhit()){
-        time(&segundos);data_hora_atual = localtime(&segundos);
     hidecursor(); ///Caso esta função não seja chamada. O cursor irá ficar "maluco" a percorrer todas as linhas da consola pois não tem tempo para chegar ao fim antes do reinicio
     gotoxy(2,1);printf("   _____________________________________________________________________________________________________________");
     gotoxy(2,2);printf("  /                                            ");textcolor(LIGHTGREEN);printf(".......");textcolor(GREEN+BLINK);printf(",,,..."); textcolor(RED);printf("/*******");textcolor(WHITE);printf("                                            \\");
@@ -572,7 +562,7 @@ char getcharacter;
     gotoxy(2,7);printf("|                                                 ");textcolor(LIGHTGREEN);printf(",");textcolor(GREEN+BLINK);printf("///*");textcolor(LIGHTGREEN);printf("     "); textcolor(RED);printf("####,");textcolor(WHITE);printf("                                                 |");
     gotoxy(2,8);printf("|-----------------------------------------------------------------------------------------------------------------|");
     gotoxy(2,9);printf("|                                                                                                                 |");
-    gotoxy(2,10);printf("                 Destino Selecionado: %s, Preço Viagem Ida: %i Eur, Preco Viagem Ida e Volta: %i",destino,oneway,roundtrip);
+    gotoxy(2,10);printf("                 Destino Selecionado: %s, Preço Viagem Ida: %i Eur, Preco Viagem Ida e Volta: %i",destino,oneway,roundtrip+oneway);
     gotoxy(2,11);printf("|");     gotoxy(25,11);    puts(" _________________________________________________________________                         |");
     gotoxy(2,12);printf("|");     gotoxy(25,12);    puts("/-----------------------------------------------------------------\\                        |");
     gotoxy(2,13);printf("|");     gotoxy(25,13);    puts("*                                                                 *                        |");
@@ -591,7 +581,6 @@ char getcharacter;
     gotoxy(2,26);printf(" |                                                                                                                 |\n");
     gotoxy(2,27);printf("  \\                                                                                                               /\n");
     gotoxy(2,28);printf("   \\_____________________________________________________________________________________________________________/");
-       time(&segundos);data_hora_atual = localtime(&segundos);
     }
     }
     getcharacter=getch();
@@ -633,6 +622,5 @@ char getcharacter;
 
     }
 }
-
 
 #endif // LAYOUTS_H_INCLUDED

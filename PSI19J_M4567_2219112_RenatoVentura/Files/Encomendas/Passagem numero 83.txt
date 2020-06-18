@@ -1,0 +1,8 @@
+Passagem numero 83 
+Recibo do voo:
+ Voo de portugal a Maldivas: 669,00 EUR
+ Voo de Maldivas a portugal: 85,00 EUR
+
+ Iva Aplicado de acordo com a Taxa legal de 23% 
+Total Sem IVA: 613,01 EUR
+Total: 754,00 EUR

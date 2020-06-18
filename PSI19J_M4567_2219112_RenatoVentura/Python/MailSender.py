@@ -23,7 +23,7 @@ subject= "Recibo da "+fi.readline()
 #vai buscar o email do cliente atual
 send_to_email=f.readline()
 
-message='Em anexo segue o recibo da sua reserva. Esperemos que tenha uma otima viagem'
+message='Em anexo segue o recibo da sua reserva. Esperemos que tenha uma ótima viagem'
 
 #fecha os ficheiros
 f.close

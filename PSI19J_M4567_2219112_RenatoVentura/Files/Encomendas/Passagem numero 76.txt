@@ -1,0 +1,8 @@
+Passagem numero 76 
+Recibo do voo:
+ Voo de portugal a Brasil: 450,00 EUR
+ Voo de Brasil a portugal: 350,00 EUR
+
+ Iva Aplicado de acordo com a Taxa legal de 23% 
+Total Sem IVA: 650,41 EUR
+Total: 800,00 EUR

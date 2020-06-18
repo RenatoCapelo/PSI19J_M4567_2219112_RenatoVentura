@@ -17,14 +17,16 @@ char filename[99]="";
 
 int a;
 int roundtrip;
-int miles;
 
 ticket_selling_layout();
 
-system("Files\\PDFs\\Paises.pdf");
+if(login.user_type==0){system("Files\\PDFs\\Paises.pdf");}
 
 gotoxy(30,12);gets(origin_input);
-
+if(strcmpi("login",origin_input)==0)
+{
+    strcpy(origin_input,login.pais_cliente);
+}
 
 strcat(filename,".\\Files\\Paises\\");
 strcat(filename,origin_input);
@@ -35,14 +37,21 @@ if ( file != NULL )
 {
   system("cls");
   destination_select: ;
-  char line [128]=""; /* or other suitable maximum line size */
+  char line [128]="";
   int loop=0;
   printf("\n\n                    Selecione o Destino Pretendido: \n");
   while (fgets ( line, sizeof line, file) != NULL ) /* read a line */
   {
-    sscanf(line,"%s %i %i %i",dados_voo[loop].destino,&dados_voo[loop].oneway,&dados_voo[loop].roundtrip,&dados_voo[loop].miles);
+    sscanf(line,"%s %i %i",dados_voo[loop].destino,&dados_voo[loop].precos[0],&dados_voo[loop].precos[1]);
     fflush(stdin);
-    printf("\ndestino: %s\npreco viagem simples: %i\npreco ida e volta: %i\n\n",dados_voo[loop].destino,dados_voo[loop].oneway,dados_voo[loop].roundtrip);
+    for(int letra=0;letra<strlen(dados_voo[loop].destino);letra++)
+    {
+        if(dados_voo[loop].destino[letra]=='-')
+        {
+            dados_voo[loop].destino[letra]=' ';
+        }
+    }
+    printf("\ndestino: %s\npreco viagem simples: %i\npreco ida e volta: %i\n\n",dados_voo[loop].destino,dados_voo[loop].precos[0],dados_voo[loop].precos[1]+dados_voo[loop].precos[0]);
     loop++;
   }
   fclose ( file );
@@ -67,8 +76,8 @@ if ( file != NULL )
     else
     {
         system("cls");
-        roundtrip=roundtrip_layout(dados_voo[a].destino,dados_voo[a].oneway,dados_voo[a].roundtrip);
-        recibo(origin_input,dados_voo[a].destino,roundtrip,dados_voo[a].oneway,dados_voo[a].roundtrip,login.email_cliente);
+        roundtrip=roundtrip_layout(dados_voo[a].destino,dados_voo[a].precos[0],dados_voo[a].precos[1]);
+        if(login.user_type==0){recibo(origin_input,dados_voo[a].destino,roundtrip,dados_voo[a].precos[0],dados_voo[a].precos[1],login.email_cliente,login.nif_cliente);}
 
     }
 }

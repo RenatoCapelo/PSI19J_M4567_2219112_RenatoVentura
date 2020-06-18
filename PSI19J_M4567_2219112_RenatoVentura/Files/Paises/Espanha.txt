@@ -1,0 +1,3 @@
+Marrocos 50 70
+França 60 80
+Alemanha 90 150

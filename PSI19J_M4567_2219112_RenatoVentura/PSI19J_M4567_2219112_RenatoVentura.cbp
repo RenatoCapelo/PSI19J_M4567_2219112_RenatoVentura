@@ -31,6 +31,9 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="Consulta_Reservas.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="Venda Bilhetes.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
@@ -40,16 +43,19 @@
 		<Unit filename="funcoes.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="horarios.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="layouts.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="structures.h">
+		<Unit filename="perfil_cliente.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
-		<Unit filename="testes.h">
+		<Unit filename="structures.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Extensions>

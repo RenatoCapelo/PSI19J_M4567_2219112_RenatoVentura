@@ -1,0 +1,7 @@
+Passagem numero 71 
+ Recibo do voo:
+ Voo de Tailandia a china: 400,00 €
+ Voo de china a Tailandia: 643,00 Eur
+ Iva Aplicado de acordo com a Taxa legal de 23% 
+Total Sem IVA: 847,97 €
+Total: 1043,00 Eur

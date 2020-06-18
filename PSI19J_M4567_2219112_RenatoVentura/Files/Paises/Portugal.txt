@@ -1,1 +1,3 @@
-Brasil 450 780 4790
+Brasil 450 350
+Dinamarca 150 125
+Maldivas 669 85
