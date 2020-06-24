@@ -1,3 +1,0 @@
-Russia 350 250
-Inglaterra 120 70
-Austria 55 30

@@ -1,0 +1,3 @@
+Gronelandia 120 200
+Estados-Unidos 300 500
+Portugal 600 950

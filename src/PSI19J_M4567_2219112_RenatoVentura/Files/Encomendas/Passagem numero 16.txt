@@ -1,0 +1,7 @@
+Passagem numero 16 
+ Recibo do voo:
+ Voo de lisboa a porto: 150,00 €
+ Voo de porto a lisboa: 200,00 Eur
+ Iva Aplicado de acordo com a Taxa legal de 23% 
+Total Sem IVA: 284,55 €
+Total: 350,00 Eur

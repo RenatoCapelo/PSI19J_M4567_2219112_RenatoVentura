@@ -1,0 +1,10 @@
+Passagem numero 94 
+NIF: 123456789
+Recibo do voo:
+
+ Voo de Portugal a Dinamarca: 150,00 EUR
+ Voo de Dinamarca a Portugal: 125,00 EUR
+
+ Iva Aplicado de acordo com a Taxa legal de 23% 
+Total Sem IVA: 223,58 EUR
+Total: 275,00 EUR

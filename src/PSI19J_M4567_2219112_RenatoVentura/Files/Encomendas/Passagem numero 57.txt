@@ -1,0 +1,7 @@
+Passagem numero 57 
+ Recibo do voo:
+ Voo de portugal a Dinamarca: 150,00 €
+ Voo de Dinamarca a portugal: 125,00 Eur
+ Iva Aplicado de acordo com a Taxa legal de 23% 
+Total Sem IVA: 223,58 €
+Total: 275,00 Eur

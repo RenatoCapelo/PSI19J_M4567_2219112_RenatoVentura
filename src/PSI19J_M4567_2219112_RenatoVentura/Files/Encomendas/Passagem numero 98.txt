@@ -1,0 +1,12 @@
+Passagem numero 98 
+NIF: 123456789
+Recibo do voo:
+
+ Voo de holanda a Reino Unido: 140,00 EUR
+ Voo de Reino Unido a holanda: 50,00 EUR
+
+ Iva Aplicado de acordo com a Taxa legal de 23% 
+Total Sem IVA: 154,47 EUR
+Total: 190,00 EUR
+
+Para confirmar a reserva diriga-se a uma das nossa lojas para efetuar o pagamento nos proximos 2 dias uteis

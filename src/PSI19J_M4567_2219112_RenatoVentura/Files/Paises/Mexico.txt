@@ -1,0 +1,2 @@
+Estados-Unidos 140 50
+Chile 160 80
